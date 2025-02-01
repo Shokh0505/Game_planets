@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'planetGame/css/play.css' %}">
+    <title>Save the earth</title>
+</head>
+<body>
+    <div class="main">
+        <div class="earth">
+            <img src="{% static 'planetGame/images/earth.png' %}" alt="The home">
+        </div>
+        <div class="suggested_words">
+            <div class="suggested_letter"></div>
+        </div>
+        <div class="actual_word"></div>
+        <div class="winner_message">
+            You saved our earth! <br>
+            Well done! <br />
+            <a href="{% url 'home' %}">
+                <button class="button">
+                    Go Back
+                </button>
+            </a>
+        </div>
+    </div>
+    <script src="{% static 'planetGame/js/play.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,251 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Orbitron", serif;
+    --text-shadow-color: #08C2FF;
+    --background-color: rgba(141, 141, 141, 0.6);
+    color: aliceblue;
+}
+.game_main {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../images/Green\ Nebula\ 7\ -\ 512x512.png');
+    background-repeat: repeat;
+    padding-bottom: 3rem;
+}
+
+.game_main_buttons {
+    padding: 2rem 3rem;
+    text-align: right;
+}
+
+button {
+    color: aliceblue;
+    padding: 0.4rem 1rem;
+    background: linear-gradient(to right, #00C1FF, #82C8FF);
+}
+
+.game_main_buttons button a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.game_main_title {
+    margin-top: 4rem;
+    text-align: center;
+    font-size: 3rem;
+    color: aliceblue;
+    text-shadow: 
+        0 0 5px var(--text-shadow-color),
+        0 0 10px var(--text-shadow-color),
+        0 0 20px var(--text-shadow-color),
+        0 0 30px var(--text-shadow-color),
+        0 0 40px var(--text-shadow-color),
+        0 0 50px var(--text-shadow-color),
+        0 0 60px var(--text-shadow-color);
+    transform: all 0.5s;
+}
+
+.game_main_control {
+    width: 30rem;
+    background-color: rgba(63, 62, 62, 0.5);
+    text-align: center;
+    margin: 3rem auto 0;
+    box-shadow: 2px 5px 10px #08C2FF;
+    box-shadow: rgba(0, 193, 255, 0.9) 0px 5px 20px;
+    padding: 1rem 2rem;
+    overflow: hidden;
+    height: 20rem;
+}
+
+.game_main_control_item {
+    background-color: var(--background-color);
+    margin: 1.8rem 0;
+    border-radius: 0.2rem;
+    padding: 0.4rem 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    transition: all 0.4s ease;
+}
+
+
+.game_main_control_item:hover {
+    background: rgba(141, 141, 141, 0.9);
+}
+
+@keyframes move_left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-200%);
+        display: none;
+    }
+}
+
+.move_left {
+    animation-name: move_left;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes move_right {
+    0% {
+        transform: translateX(-200%);
+        display: block;
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.move_right {
+    animation: move_right 0.5s forwards;
+}
+
+@keyframes appear {
+    0% {
+        transform: translateX(200%);
+        display: none;
+    }
+
+    50% {
+        display: flex;
+        transform: translateX(200%);
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+.game_main_lesson {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--background-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+    animation: appear 1s forwards;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.game_main_lesson_svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lessons_wrapper {
+    height: 15rem;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+/* General scrollbar style */
+::-webkit-scrollbar {
+    width: 5px; 
+}
+
+/* Track style */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    color: #00C1FF; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #888; 
+    border-radius: 5px; 
+}
+
+.game_main_control_buttons {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game_main_control_buttons button {
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer ;
+}
+
+@keyframes openWords {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.lesson_words {
+    background-color: var(--background-color);
+    padding: 0.8rem 1rem;
+    transform: scale(0);
+    animation: openWords 0.3s forwards;
+}
+
+.lesson_word {
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.4rem 0;
+}
+
+.lesson_word img {
+    cursor: pointer;
+}
+
+@keyframes move_up {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+.text_area {
+    width: 100%;
+    height: 15rem;
+    padding: 0.4rem;
+    color: aliceblue;
+    font-size: 1.1rem;
+    overflow: auto;
+    background-color: var(--background-color);
+    animation: move_up 1s forwards;
+}
+
+.text_area::placeholder {
+    color: aliceblue;
+}
+
+.selected {
+    background-color: rgba(130, 129, 129, 0.1);
+}

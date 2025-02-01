@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'planetGame/css/signup.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    <section class="main">
+        <h2 class="main_box_title">Login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="main_box">
+                <div class="signup_inputs">
+                    <input type="text" placeholder="Username" name="username">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                <div class="main_box_button">
+                    <a href="{% url 'signup' %}">
+                        <div class="main_button">
+                            Sign up
+                        </div>
+                    </a>
+                    <button class="main_button">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>

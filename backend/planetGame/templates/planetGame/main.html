@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'planetGame/css/main.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <title>Save The Earth</title>
+</head>
+<body>
+    <section class="game_main">
+        <div class="game_main_buttons">
+        {% if not user.is_authenticated %}
+            <button>
+                <a href="#">Sign up</a> / <a href="#">Login</a>
+            </button>
+        {% endif %}
+        </div>
+        <h2 class="game_main_title">Save The Earth</h2>
+        <div class="game_main_control">
+            <div class="game_main_control_item">
+                Play
+            </div>
+            <div class="game_main_control_item">
+                Add Words
+            </div>
+            <div class="game_main_control_item">
+                Options
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'planetGame/js/main.js' %}"></script>
+</body>
+</html>
