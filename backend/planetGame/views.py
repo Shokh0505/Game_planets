@@ -141,9 +141,7 @@ def get_words(request):
             return JsonResponse({"message": 'Invalid Response'}, status=400)
         
         lessonNumber = data.get('lessonNumber')
-        print(lessonNumber)
         words = Word.objects.filter(student=user, lesson=lessonNumber).order_by('lesson')
-        print(words)
         total_words = len(words)
 
         words = WordsSerializer(words, many=True).data

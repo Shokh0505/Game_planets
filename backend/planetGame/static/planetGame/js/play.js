@@ -75,7 +75,7 @@ function generateRandomCoor() {
 }
 
 function movePlanet() {
-    const speed = 0.03; 
+    const speed = 0.1; 
 
     for (let i = 0; i < planets.length; i++) {
         const planet = planets[i];
