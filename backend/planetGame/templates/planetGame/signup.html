@@ -21,6 +21,7 @@
                     <input type="text" placeholder="Username" name="username">
                     <input type="password" name="password" id="password" placeholder="Password">
                     <input type="password" name="confirmation_password" id="confirmation_password" placeholder="Confirm password">
+                    <div class="g-recaptcha" data-sitekey="6LdEAM8qAAAAAMTlDBSiGKenvvLhT7oOzUaZpkID"></div>
                 </div>
                 <div class="main_box_button">
                     <a href="{% url 'login' %}">
@@ -35,5 +36,6 @@
             </div>
         </form>
     </section>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

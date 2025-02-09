@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from .models import User, Word
 from .serializers import WordsSerializer
+import requests
 import logging
 import json
 
@@ -20,7 +21,22 @@ def signUp(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         conf_password = request.POST.get('confirmation_password')
-        
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+
+        # Verify reCaptcha
+        secret_key = "6LdEAM8qAAAAAO9kMBWow007cZOnyzBgeH0kmcx5"
+        data = {
+            "secret": secret_key,
+            "response": recaptcha_response
+        }
+        recaptcha_verify_url = "https://www.google.com/recaptcha/api/siteverify"
+        response = requests.post(recaptcha_verify_url, data=data)
+        result = response.json()
+
+        if not result.get("success"):
+            return HttpResponse("reCAPTCHA verification failed! Please try again.")
+
+
         if not name or not username or not password or not conf_password:
             return HttpResponse("All fields are required!")
 
@@ -46,6 +62,20 @@ def login_game(request):
     elif request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+
+        # Verify reCaptcha
+        secret_key = "6LdEAM8qAAAAAO9kMBWow007cZOnyzBgeH0kmcx5"
+        data = {
+            "secret": secret_key,
+            "response": recaptcha_response
+        }
+        recaptcha_verify_url = "https://www.google.com/recaptcha/api/siteverify"
+        response = requests.post(recaptcha_verify_url, data=data)
+        result = response.json()
+
+        if not result.get("success"):
+            return HttpResponse("reCAPTCHA verification failed! Please try again.")
 
         user = authenticate(username=username, password=password)
 

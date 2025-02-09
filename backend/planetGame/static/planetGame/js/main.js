@@ -21,6 +21,12 @@ window.addEventListener('DOMContentLoaded', () => {
     Determines the number of lessons and add them to the DOM with 'Go back' and 'Add Word' buttons
 */
 function handleAddingWordDiv() {
+    const cookie = getCookie('csrftoken');
+    if (cookie == null || cookie == '') {
+        alert("Login in order to see lessons")
+        return
+    }
+
     moveDivsLeft('game_main_control_item');
     document.querySelector('.game_main_title').textContent = 'Add Word';
     
@@ -50,12 +56,6 @@ function determineLessonNum() {
     return [...new Set(words.map(word => word.lesson))].sort((a, b) => a - b)
 }
 
-function createDiv(element, classes) {
-    let el = document.createElement(element);
-    el.classList.add(classes);
-    return el
-}
-
 function renderLessons(lessons, motherDiv) {
     lessons_len = lessons.length;
 
@@ -76,6 +76,12 @@ function renderLessons(lessons, motherDiv) {
         game_div.append(textDiv, svgDiv);
         motherDiv.append(game_div);
     }
+}
+
+const createDiv = (element, classes) => {
+    let el = document.createElement(element);
+    el.classList.add(classes);
+    return el
 }
 
 function addButtons() {
@@ -318,6 +324,12 @@ function createTextArea(lesson) {
     Movel Play, Adding words and Options to left. It lists the available lessons for choosing
 */
 function handlePlay(event) {
+    const cookie = getCookie('csrftoken');
+    if (cookie == null || cookie == '') {
+        alert("Login in order to see lessons")
+        return
+    }
+    
     moveDivsLeft('game_main_control_item');
 
     const main_box = document.querySelector('.game_main_control');
@@ -488,3 +500,4 @@ function handleDeleteWord(event) {
         console.error('Error with network', error);
     })
 }
+
